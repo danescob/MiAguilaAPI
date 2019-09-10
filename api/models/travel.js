@@ -26,17 +26,15 @@ var Travel = new Schema({
   status: {
     type: [{
       type: String,
-      enum: ['OnWay', 'Near', 'Started']
+      enum: ['onway', 'near', 'started']
     }],
-    default: ['Started']
+    default: ['started']
   },
   createdAt: {
-    type: Date,
-    default: Date.now
+    $date: Date
   },
   udpatedAt: {
-    type: Date,
-    default: Date.now
+    $date: Date
   },
   price: Number,
   driver_location : Point

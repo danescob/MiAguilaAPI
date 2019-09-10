@@ -18,9 +18,11 @@ exports.list_city = function(req, res) {
 };
 exports.create = function(req, res) {
     var new_travel = new Travel(req.body);
+    console.log(new_travel);
     new_travel.save(function(err, travel) {
         if (err)
             res.send(err);
+        console.log(err);
         res.json(travel);
     });
 };

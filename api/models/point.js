@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 var PointSchema = new Schema({
   date: {
-    type: Date
+    $date: Date
   },
   pickup_address: String,
   pickup_location: Location
