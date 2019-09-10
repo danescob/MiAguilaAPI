@@ -1,28 +1,45 @@
 'use strict';
 var mongoose = require('mongoose');
+var Point = require("./point");
+var Person = require("./person");
+var Car = require("./car");
 var Schema = mongoose.Schema;
-
 
 var Travel = new Schema({
   start: {
-    type: String,
+    type: Point,
     required: 'Do you need set the start point'
   },
   end: {
-    type: String,
+    type: Point,
     required: 'Do you need set the endpoint point'
   },
-  Created_date: {
-    type: Date,
-    default: Date.now
+  country: {
+    name: String
   },
+  city: {
+    name : String
+  },
+  passenger : Person,
+  driver : Person,
+  car: Car,
   status: {
     type: [{
       type: String,
-      enum: ['pending', 'ongoing', 'completed']
+      enum: ['OnWay', 'Near', 'Started']
     }],
-    default: ['pending']
-  }
+    default: ['Started']
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  udpatedAt: {
+    type: Date,
+    default: Date.now
+  },
+  price: Number,
+  driver_location : Point
 });
 
-module.exports = mongoose.model('Tasks', Travel);
+module.exports = mongoose.model('Travel', Travel);
